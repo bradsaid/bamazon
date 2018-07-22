@@ -5,39 +5,56 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "password",
+    password: "bobcc",
     database: "bamazon"
   });
-  
-  connection.connect(function(err) {
-    if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-    afterConnection();
-    connection.end();
-  });
-
-  function afterConnection() {
+ 
+function start() {
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
-      console.log(res);
-      //function here()
-    });
-  }
-
-  inquirer
-  .prompt([
-    {
-      type: "input",
-      message: "Would you like to POST or BID on an item?",
-      name: "selection"
+      else {
+        for (let i = 0; i < res.length; i++) {
+            console.log(`${res[i].item_id} | ${res[i].product_name} | ${res[i].price} | ${res[i].stock_quantity}`)
+        }
     }
-  ])
-  .then(function(inquirerResponse) {
-    if (inquirerResponse.selection === "POST" || inquirerResponse.selection === "BID") {
-      console.log("\nOk, let's " + inquirerResponse.selection);
+    inquirer.prompt([
+      {
+          type: 'input',
+          name: 'id',
+          message: 'Which Product Would You Like To Buy? (Pick ID)'
+      },
+      {
+        type: 'input',
+        name: 'quantity',
+        message: 'How many would you like to buy?'
     }
-    else {
-      console.log("\nOoops, that wasn't an option\n");
-    }
+    ]).then(function (answer) {
+      connection.query('SELECT item_id, product_name, price, department_name, stock_quantity  FROM products WHERE ?',
+          [{ item_id: answer.id }],
+          function (err, res) {
+              if (err) {
+                  console.log(err)
+              }
+              else {
+                  for (let i = 0; i < res.length; i++) {
+                      console.log(`${res[i].product_name} | ${res[i].stock_quantity}`)
+                      if (answer.quantity > res[i].stock_quantity) {
+                        console.log("Insufficient Quantity! Try Again")
+                        start()
+                      }
+                      else {
+                        connection.query('UPDATE products SET stock_quantity = stock_quantity - ? WHERE ?',
+                        [ answer.quantity, { item_id: answer.id } ])
+                        for (let i = 0; i < res.length; i++) {
+                          console.log("Your purchase of " + answer.quantity + " units of " + res[i].product_name + " costs: " + (res[i].price * answer.quantity))
+                          connection.end()  
+                        }          
+                      }
+                  }    
+              }
+          })
+     })
   });
+}
 
+start()
