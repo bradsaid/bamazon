@@ -20,7 +20,7 @@ const connection = mysql.createConnection({
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
       console.log(res);
-      //create()
+      //function here()
     });
   }
 
@@ -41,17 +41,3 @@ const connection = mysql.createConnection({
     }
   });
 
-  /*function create() {
-    console.log("Inserting a new item...\n");
-    var query = connection.query(
-      "INSERT INTO products SET ?",
-      {
-        item: "",
-        price: "",
-      },
-      function(err, res) {
-        console.log(res.affectedRows + " item inserted!\n");
-      }
-    );
-    //console.log(query.sql);
-  }*/
