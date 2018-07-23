@@ -8,5 +8,13 @@ If there is sufficient inventory of selected product, the user will get a messag
 
 If there is not sufficient inventory, the user will be prompted to choose again.
 
+Directions:
 
+1. npm install inquirer
+1. npm install mysql
+1. node bamazonCustomer.js
+1. Returns a list of products to select
+1. Select product by ID
+1. Enter quantity
+1. Retuns the purchase price and updates the stock quantity in the database
 
