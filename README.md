@@ -16,17 +16,17 @@ Installation Directions:
 
 Manager Login Usage Directions:
 
-1. Manager Login allows for creating products, viewing product status and add stock quantities. [a link](https://github.com/bradsaid/bamazon/blob/master/Screenshots/1.png)
-1. View Products For Sale returns a list of product details.
-1. View Low Inventory returns a list of all products with a stock_quanity less than 5.
-1. Add To Inventory allows the manager to add to the stock_quantity of a specific item.
-1. And New Product allows the manager to create a new product.
+1. Manager Login allows for creating products, viewing product status and add stock quantities. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/1.png)
+1. View Products For Sale returns a list of product details. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/3.png)
+1. View Low Inventory returns a list of all products with a stock_quanity less than 5. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/4.png)
+1. Add To Inventory allows the manager to add to the stock_quantity of a specific item. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/5.png)
+1. And New Product allows the manager to create a new product. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/6.png)
 
 Customer Login Usage Directions:
 
 1. Customer Login allows for purchases.
-1. Returns a list of products to select.
+1. Returns a list of products to select. 
 1. Select product by ID.
 1. Enter quantity.
-1. Retuns the purchase price and updates the stock quantity in the database.
+1. Retuns the purchase price and updates the stock quantity in the database. [Screenshot](https://github.com/bradsaid/bamazon/blob/master/Screenshots/2.png)
 
